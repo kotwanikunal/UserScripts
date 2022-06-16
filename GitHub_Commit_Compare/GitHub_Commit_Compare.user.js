@@ -232,16 +232,16 @@
             const lastItem = items[items.length - 1];
 
             if (lastItem.textContent.charAt(lastItem.textContent.length - 1) != ')') {
-                const parsedTitle = rawText.substring(0, text.length - 1);
+                const parsedTitle = rawText.substring(0, rawText.length - 1);
                 const additional = item.parentNode.querySelector('.ws-pre-wrap');
                 const additionalText = additional.textContent;
-                const additionalTitle = additionalText.substring(1, otherText.indexOf('('));
+                const additionalTitle = additionalText.substring(1, additionalText.indexOf('('));
                 const issueLinks = additional.querySelectorAll('.issue-link');
                 const issueLink = issueLinks[issueLinks.length - 1].href;
                 const issueText = issueLinks[issueLinks.length - 1].textContent;
                 data += '* ' + parsedTitle + additionalTitle + '([' + issueText + '](' + issueLink + "))\n";
             } else {
-                const parsedTitle = text.substring(0, text.length - 1);
+                const parsedTitle = rawText.substring(0, rawText.length - 1);
                 const issueLink = item.querySelector('.issue-link').href;
                 const issueText = item.querySelector('.issue-link').textContent;
                 data += '* ' + parsedTitle + '([' + issueText + '](' + issueLink + "))\n";
